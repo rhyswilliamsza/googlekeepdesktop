@@ -5,8 +5,8 @@
   "description": "A desktop version of Google's Keep Notekeeping service",
   "main": "src/main.js",
   "scripts": {
-    "pack:osx": "electron-packager ./ --icon icons/mac/icon.icns --platform darwin --overwrite --out ./build/",
-    "pack:win": "electron-packager ./ --icon icons/win/icon.ico --platform win32 --overwrite --out ./build/"
+    "pack:osx": "electron-packager ./ --icon src/icons/mac/icon.icns --platform darwin --overwrite --out ./build/",
+    "pack:win": "electron-packager ./ --icon src/icons/win/icon.ico --platform win32 --overwrite --out ./build/"
   },
   "author": "",
   "license": "ISC",
