@@ -19,9 +19,9 @@ function createWindow() {
             titleBarStyle: 'hidden'
         });
 
-    // and load the index.html of the app.
+    // and load the app.html of the app.
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, 'app.html'),
         protocol: 'file:',
         slashes: true
     }));
