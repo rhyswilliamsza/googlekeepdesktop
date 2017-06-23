@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+    <title>Google Keep</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #googleKeepWeb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    #topBar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 50px;
+        -webkit-app-region: drag;
+    }
+
+    #loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: #FFBB00;
+        z-index: 999;
+    }
+
+    @keyframes loadFadeOut {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+</style>
+<div id="loading">
+
+</div>
+<body>
+<div id="topBar"></div>
+<webview id="googleKeepWeb" src="https://keep.google.com/"></webview>
+</body>
+
+<script>
+    onload = () => {
+        const webview = document.querySelector('webview');
+        const loading = document.querySelector('#loading');
+
+        const loadstop = () => {
+
+            webview.insertCSS("#gb > div:nth-child(2) { padding-top: 20px })");
+
+//            webview.executeJavaScript(function () {
+//                document.querySelector('[role="banner"]').childNodes[1].style.paddingTop = "30px";
+//            });
+
+            loading.style.animation = "loadFadeOut 0.7s forwards";
+            setTimeout(function () {
+                loading.style.display = "none";
+            }, 1000);
+        };
+
+//        webview.addEventListener('did-navigate-in-page', function (url) {
+//            setTimeout(function () {
+//                webview.capturePage(function (out) {
+//                    var img = document.createElement("img");
+//                    img.src = out.toDataURL();
+//                    var canvas = document.createElement('canvas');
+//                    canvas.width = img.width;
+//                    canvas.height = img.height;
+//                    canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+//                    var pixelData = canvas.getContext('2d').getImageData(0, 0, 1, 1).data;
+//                    document.querySelector("#topbar").style.backgroundColor = "rgba(" + pixelData[0] + "," + pixelData[1] + "," + pixelData[2] + "," + pixelData[3] + ")";
+//                    console.log(pixelData);
+//                });
+//            }, 300);
+//
+//        });
+
+        webview.addEventListener('did-stop-loading', loadstop);
+    }
+</script>
+</html>

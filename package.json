@@ -1,0 +1,17 @@
+{
+  "name": "googlekeepdesktop",
+  "productName": "Google Keep Desktop Edition",
+  "version": "0.0.1",
+  "description": "A desktop version of Google's Keep Notekeeping service",
+  "main": "main.js",
+  "scripts": {
+    "pack:osx": "electron-packager ./ --icon icons/mac/icon.icns --platform darwin --overwrite --out ./build/",
+    "pack:win": "electron-packager ./ --icon icons/win/icon.ico --platform win32 --overwrite --out ./build/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.6.11",
+    "electron-packager": "^8.7.1"
+  }
+}
