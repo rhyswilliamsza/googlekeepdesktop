@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        background-color: #FFBB00;
+    }
+
+    #loadContainer {
+        padding: 0;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 300px;
+        height: 300px;
+    }
+
+    #loadSpinner {
+        position: absolute;
+        width: 94px;
+        animation: loader 3s forwards;
+        z-index: 1;
+        top: 75px;
+        left: 103px;
+    }
+
+    #lightBulb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        animation: fadeIn 1s forwards;
+        animation-delay: 2s;
+        opacity: 0;
+        z-index: 0;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 100;
+        }
+    }
+
+    @keyframes loader {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        66% {
+            transform: rotate(1800deg);
+            opacity: 1;
+        }
+
+        100% {
+            transform: rotate(1800deg);
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
+
+<div id="loader">
+    <div id="loadContainer">
+        <svg id="loadSpinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137 134.52"><defs><style>.cls-1{fill:#fff;}</style></defs><title>circle</title><path class="cls-1" d="M68.5,0A68.5,68.5,0,0,0,50.25,134.52v-13.9a54.74,54.74,0,1,1,42-2.28v14.42A68.51,68.51,0,0,0,68.5,0Z"/></svg>
+        <img id="lightBulb" src="img/keep-512.png">
+    </div>
+</div>
+
+</body>
+</html>
