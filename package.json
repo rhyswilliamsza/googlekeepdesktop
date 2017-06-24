@@ -6,7 +6,9 @@
   "main": "src/main.js",
   "scripts": {
     "pack:osx": "electron-packager ./ --icon src/icons/mac/icon.icns --platform darwin --overwrite --out ./build/",
-    "pack:win": "electron-packager ./ --icon src/icons/win/icon.ico --platform win32 --overwrite --out ./build/"
+    "pack:win": "electron-packager ./ --icon src/icons/win/icon.ico --platform win32 --overwrite --out ./build/",
+    "pack:lin": "electron-packager ./ --icon src/icons/png/1024x1024.png --platform linux --overwrite --out ./build/",
+    "build": "npm run pack:osx ; npm run pack:win ; npm run pack:lin"
   },
   "author": "",
   "license": "ISC",

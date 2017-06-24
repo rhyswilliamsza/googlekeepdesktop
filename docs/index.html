@@ -6,12 +6,16 @@
     <link rel="icon" href="favicon.ico">
 </head>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+
 <style>
     body {
         background-color: #FFBB00;
     }
 
-    #loadContainer {
+    #center {
         padding: 0;
         position: absolute;
         top: 45%;
@@ -21,10 +25,10 @@
         height: 300px;
     }
 
-    #loadSpinner {
+    #logoSpinner {
         position: absolute;
         width: 94px;
-        animation: loader 3s forwards;
+        animation: spinner 3s forwards;
         z-index: 1;
         top: 75px;
         left: 103px;
@@ -35,10 +39,44 @@
         top: 0;
         left: 0;
         width: 300px;
-        animation: fadeIn 1s forwards;
+        animation: fadeInSlide 2s forwards;
         animation-delay: 2s;
         opacity: 0;
         z-index: 0;
+    }
+
+    #logoContainer {
+        width: 100%;
+    }
+
+    #buttonContainer {
+        position: relative;
+        top: 225px;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #button {
+        display: block;
+        position: absolute;
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        color: #ffffff;
+        border: 2px solid white;
+        border-radius: 5px;
+        padding: 8px 20px;
+        animation: fadeIn 1s forwards;
+        animation-delay: 3.2s;
+        opacity: 0;
+    }
+
+    #button a {
+        text-decoration: none;
+        color: white;
+        margin: 0;
+        padding: 0;
     }
 
     @keyframes fadeIn {
@@ -47,16 +85,32 @@
         }
 
         100% {
-            opacity: 100;
+            opacity: 1;
         }
     }
 
-    @keyframes loader {
+    @keyframes fadeInSlide {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 100;
+            transform: translateY(-20%);
+        }
+    }
+
+    @keyframes spinner {
         0% {
             transform: rotate(0deg);
         }
 
-        66% {
+        67% {
             transform: rotate(1800deg);
             opacity: 1;
         }
@@ -70,12 +124,34 @@
 
 <body>
 
-<div id="loader">
-    <div id="loadContainer">
-        <svg id="loadSpinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137 134.52"><defs><style>.cls-1{fill:#fff;}</style></defs><title>circle</title><path class="cls-1" d="M68.5,0A68.5,68.5,0,0,0,50.25,134.52v-13.9a54.74,54.74,0,1,1,42-2.28v14.42A68.51,68.51,0,0,0,68.5,0Z"/></svg>
+<div id="mainPage">
+    <div id="center">
+
+        <div id="logoContainer">
+        <svg id="logoSpinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137 134.52"><defs><style>.cls-1{fill:#fff;}</style></defs><title>circle</title><path class="cls-1" d="M68.5,0A68.5,68.5,0,0,0,50.25,134.52v-13.9a54.74,54.74,0,1,1,42-2.28v14.42A68.51,68.51,0,0,0,68.5,0Z"/></svg>
         <img id="lightBulb" src="assets/img/keep-512.png">
+        </div>
+
+        <div id="buttonContainer">
+            <p id="button"><a id="buttonLink" href="">...</a></p>
+        </div>
     </div>
 </div>
+
+<script>
+    window.onload = function () {
+        $.getJSON('https://api.github.com/repos/rhyswilliamsza/GoogleKeepDesktop/releases/latest?' + (new Date()).getTime(), function(data) {
+
+            document.querySelector("#button a").innerHTML = "Download " + data['name'];
+            if (navigator.userAgent.indexOf('Mac OS X') != -1) {
+                document.querySelector("#button a").setAttribute("href", data.assets[0].browser_download_url);
+            } else {
+                document.querySelector("#button a").setAttribute("href", data.assets[1].browser_download_url);
+            }
+
+        });
+    };
+</script>
 
 </body>
 </html>
