@@ -1,8 +1,8 @@
 {
   "name": "googlekeepdesktop",
   "productName": "Google Keep Desktop Edition",
-  "version": "1.0.1",
-  "description": "A desktop version of Google's Keep Notekeeping service",
+  "version": "1.0.2",
+  "description": "A Desktop edition of Google Keep",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron-window-state": "^5.0.3"
+    "electron-window-state": "^5.0.3",
+    "jquery": "^3.4.1"
   },
   "build": {
     "appId": "rhyswilliamsza.googlekeepdesktop",
